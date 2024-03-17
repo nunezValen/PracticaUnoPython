@@ -13,9 +13,36 @@ guessed_letters = []
 print("¡Bienvenido al juego de adivinanzas!")
 print("Estoy pensando en una palabra. ¿Puedes adivinar cuál es?")
 
-word_displayed = "_" * len(secret_word)
-# Mostrarla palabra parcialmente adivinada
-print(f"Palabra: {word_displayed}")
+#MENU
+print("---MENU---")
+print("1.Facil")
+print("2.intermedio")
+print("3.Dificil")
+nivel=int(input("Elija una opcion de dificultad "))
+print("----------")
+
+#NIVEL FACIL
+if (nivel==1):
+     word_displayed = "" 
+     for letter in secret_word:
+         if letter in "aeiou":
+             word_displayed +=letter
+             guessed_letters +=letter #hago que cuente como advinada 
+         else:
+             word_displayed +="_"
+     # Mostrarla palabra parcialmente adivinada
+     print(f"Palabra: {word_displayed}")
+
+#NIVEL INTERMEDIO
+elif (nivel==2):
+     word_displayed = secret_word[0]+"_"*(len(secret_word)-2)+secret_word[-1]
+     guessed_letters +=secret_word[0]+secret_word[-1] #hago que cuente como advinada 
+     print(f"Palabra: {word_displayed}")
+
+#NIVEL DIFICIL
+elif (nivel==3):
+     word_displayed = "_"*len(secret_word)
+     print(f"Palabra: {word_displayed}")
 
 while max_attempts<10 :
      # Pedir al jugador que ingrese una letra
